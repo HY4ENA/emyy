@@ -1,0 +1,175 @@
+/* Estilos gerais */
+body {
+    font-family: 'Press Start 2P', cursive; /* Fonte clássica de jogos retrô */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #a4b0a4; /* Cor de fundo verde do Game Boy */
+    margin: 0;
+}
+
+.container {
+    text-align: center;
+    padding: 20px;
+    width: 100%;
+    max-width: 600px;
+    background-color: #4b6d4b; /* Fundo da tela do Game Boy */
+    border: 4px solid #3a5c3a; /* Borda mais escura para dar profundidade */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+button {
+    font-size: 16px;
+    padding: 12px 24px;
+    margin: 10px;
+    border: 2px solid #333;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: #8b9d5d; /* Cor verde claro para botões */
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #a3b26d; /* Alteração de cor ao passar o mouse */
+}
+
+/* Primeira Fase */
+#firstPhase p {
+    font-size: 16px;
+    color: #000;
+    background-color: #d2e0a6; /* Cor suave do Game Boy */
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+#yesBtn {
+    background-color: #6b8e23; /* Verde mais forte */
+    color: white;
+}
+
+#noBtn {
+    background-color: #a52a2a; /* Vermelho mais escuro */
+    color: white;
+}
+
+/* Fase 2 */
+#secondPhase p {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.yesNoBtn {
+    font-size: 16px;
+    padding: 12px 24px;
+    margin: 10px;
+    border: 2px solid #333;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.yesNoBtn:nth-child(1) {
+    background-color: #8b2222; /* Verde mais escuro */
+    color: #f33636;
+}
+
+.yesNoBtn:nth-child(2) {
+    background-color: #4db222; /* Verde claro */
+    color: white;
+}
+
+/* Fase 3: Questionário */
+.hidden {
+    display: none;
+}
+
+.question-phase {
+    background-color: #d2e0a6;
+    padding: 20px;
+    text-align: center;
+    border-radius: 12px;
+    color: rgb(0, 0, 0);
+}
+
+.question-phase p {
+    font-size: 18px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.question-phase input {
+    padding: 8px;
+    font-size: 16px;
+    text-align: center;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 2px solid #333;
+}
+
+/* Mensagem de erro e sucesso */
+#errorMessage, #successMessage {
+    font-size: 18px;
+    color: white;
+    text-align: center;
+    background-color: #f1a8a8;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+#successMessage {
+    background-color: #4CAF50; /* Verde sucesso */
+}
+
+/* Fase 4: Introdução ao Jogo */
+#fourthPhase p {
+    font-size: 16px;
+    background-color: #d2e0a6;
+    padding: 15px;
+    border-radius: 8px;
+    color: rgb(0, 0, 0);
+    margin-top: 20px;
+}
+
+#fourthPhase button {
+    background-color: #6b8e23; /* Verde mais forte */
+    color: white;
+}
+
+#fourthPhase button:hover {
+    background-color: #a3b26d; /* Alteração de cor ao passar o mouse */
+}
+
+/* Fase 5: Questionário */
+#fifthPhase p {
+    font-size: 16px;
+    background-color: #d2e0a6;
+    padding: 15px;
+    border-radius: 8px;
+    color: rgb(0, 0, 0);
+    margin-top: 20px;
+}
+
+#fifthPhase label {
+    font-size: 16px;
+    display: block;
+    margin: 10px 0;
+    color: rgb(0, 0, 0);
+}
+
+#fifthPhase input[type="radio"] {
+    margin-right: 10px;
+}
+
+#fifthPhase button {
+    background-color: #6b8e23; /* Verde mais forte */
+    color: white;
+}
+
+#fifthPhase button:hover {
+    background-color: #a3b26d; /* Alteração de cor ao passar o mouse */
+}
