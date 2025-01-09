@@ -116,7 +116,7 @@ function checkAnswers() {
         // Somar 1 ponto
         score += 1;
         alert("Você acertou tudo! Ganhou 1 ponto!");
-        goToArkanoid();
+        goToSixthPhase();
     } else {
         document.getElementById("errorMessage").classList.remove("hidden");
         alert("Você errou! Tente novamente.");
@@ -153,7 +153,7 @@ function checkAnswers() {
         // Somar 1 ponto
         score += 1;
         alert("Você acertou! Ganhou 1 ponto!");
-        goToArkanoid();
+        goToSeventhPhase();
     } else {
         document.getElementById("errorMessage").classList.remove("hidden");
         alert("Você errou! Tente novamente.");
