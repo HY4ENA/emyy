@@ -91,7 +91,7 @@ function goToFifthPhase() {
 }
 
 // Função para verificar as respostas do questionário da fase 5
-function checkAnswers() {
+function checkAnswers1() {
     const jojo = document.querySelector('input[name="jojo"]:checked');
     const emy = document.querySelector('input[name="emy"]:checked');
 
@@ -128,7 +128,7 @@ function goToSixthPhase() {
 }
 
 // Função para verificar as respostas do questionário da fase 6
-function checkAnswers() {
+function checkAnswers2() {
     const filme_jojo = document.querySelector('input[name="filme_jojo"]:checked');
     const filme_emy = document.querySelector('input[name="filme_emy"]:checked');
 
@@ -165,7 +165,7 @@ function goToSeventhPhase() {
 }
 
 // Função para verificar as respostas do questionário da fase 7
-function checkAnswers() {
+function checkAnswers3() {
     const livro_jojo = document.querySelector('input[name="livro_jojo"]:checked');
     const livro_emy = document.querySelector('input[name="livro_emy"]:checked');
 
@@ -370,3 +370,4 @@ function resetGame() {
         });
     });
 }
+
