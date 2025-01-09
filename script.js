@@ -163,13 +163,12 @@ function goToSeventhPhase() {
     document.getElementById("sixthPhase").classList.add("hidden");
     document.getElementById("seventhPhase").classList.remove("hidden");
 }
-
-// Função para verificar as respostas do questionário da fase 7
+// Função para verificar as respostas do questionário da fase 6
 function checkAnswers() {
     const livro_jojo = document.querySelector('input[name="livro_jojo"]:checked');
     const livro_emy = document.querySelector('input[name="livro_emy"]:checked');
 
-    if (!livro_jojo || !livro_emy) {
+    if (!livro_jojo|| !livro_emy) {
         alert("Por favor, selecione todas as respostas!");
         return;
     }
