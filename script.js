@@ -91,7 +91,7 @@ function goToFifthPhase() {
 }
 
 // Função para verificar as respostas do questionário da fase 5
-function checkAnswers1() {
+function checkAnswers() {
     const jojo = document.querySelector('input[name="jojo"]:checked');
     const emy = document.querySelector('input[name="emy"]:checked');
 
@@ -370,4 +370,3 @@ function resetGame() {
         });
     });
 }
-
