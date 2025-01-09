@@ -60,7 +60,7 @@ function storeAnswers() {
     const name = document.getElementById("name").value.toLowerCase();
     const food = document.getElementById("food").value.toLowerCase();
     const music = document.getElementById("music").value.toLowerCase();
-    const animals = document.getElementById("cats").value.toLowerCase();
+    const animals = document.getElementById("animals").value.toLowerCase();
 
     // Armazenar as respostas no localStorage
     localStorage.setItem("name", name);
