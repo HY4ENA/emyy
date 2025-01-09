@@ -173,3 +173,62 @@ button:hover {
 #fifthPhase button:hover {
     background-color: #a3b26d; /* Alteração de cor ao passar o mouse */
 }
+/* Fase 6: Questionário */
+#sixthPhase p {
+    font-size: 16px;
+    background-color: #d2e0a6;
+    padding: 15px;
+    border-radius: 8px;
+    color: rgb(0, 0, 0);
+    margin-top: 20px;
+}
+
+#sixthPhase label {
+    font-size: 16px;
+    display: block;
+    margin: 10px 0;
+    color: rgb(0, 0, 0);
+}
+
+#sixthPhase input[type="radio"] {
+    margin-right: 10px;
+}
+
+#sixthPhase button {
+    background-color: #6b8e23; /* Verde mais forte */
+    color: white;
+}
+
+#sixthPhase button:hover {
+    background-color: #a3b26d; /* Alteração de cor ao passar o mouse */
+}
+/* Fase 7: Questionário */
+#seventhPhase p {
+    font-size: 16px;
+    background-color: #d2e0a6;
+    padding: 15px;
+    border-radius: 8px;
+    color: rgb(0, 0, 0);
+    margin-top: 20px;
+}
+
+#seventhPhase label {
+    font-size: 16px;
+    display: block;
+    margin: 10px 0;
+    color: rgb(0, 0, 0);
+}
+
+#seventhPhase input[type="radio"] {
+    margin-right: 10px;
+}
+
+#seventhPhase button {
+    background-color: #6b8e23; /* Verde mais forte */
+    color: white;
+}
+
+#seventhPhase button:hover {
+    background-color: #a3b26d; /* Alteração de cor ao passar o mouse */
+}
+
