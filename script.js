@@ -96,7 +96,6 @@ function checkAnswers() {
     const emy = document.querySelector('input[name="emy"]:checked');
 
     if (!jojo || !emy) {
-        alert("Por favor, selecione todas as respostas!");
         return;
     }
 
@@ -133,7 +132,6 @@ function checkAnswers() {
     const filme_emy = document.querySelector('input[name="filme_emy"]:checked');
 
     if (!filme_jojo|| !filme_emy) {
-        alert("Por favor, selecione todas as respostas!");
         return;
     }
 
@@ -169,7 +167,6 @@ function checkAnswers() {
     const livro_emy = document.querySelector('input[name="livro_emy"]:checked');
 
     if (!livro_jojo|| !livro_emy) {
-        alert("Por favor, selecione todas as respostas!");
         return;
     }
 
@@ -191,3 +188,4 @@ function checkAnswers() {
         alert("Você acertou! Ganhou 1 ponto!");
     }
 }
+
