@@ -1,170 +1,177 @@
-// Variáveis de controle
-let attempts = 0;
+// Variáveis para controle de fases
+let currentPhase = 1;
 let score = 0;
+let correctAnswers = 0;
+let storedAnswers = {
+    name: '',
+    food: '',
+    music: '',
+    animals: ''
+};
 
-// Função chamada ao clicar no botão "Sim"
-function moveYesButton() {
-    const yesBtn = document.getElementById("yesBtn");
-    attempts++;
+// Função para mostrar a próxima fase
+function goToNextPhase() {
+    // Ocultar a fase atual
+    document.getElementById(`phase${currentPhase}`).classList.add('hidden');
 
-    if (attempts < 4) {
-        // Move o botão "Sim" aleatoriamente até o 4º clique
-        moveButton(yesBtn);
-    } else {
-        // Permitir o clique após 4 tentativas
-        yesBtn.style.position = "static"; // Posiciona o botão de volta ao lugar
-        yesBtn.disabled = false;         // Habilita o botão
-        yesBtn.innerText = "Agora pode clicar!";
-
-        // Transição para a segunda fase
-        setTimeout(function () {
-            document.getElementById("firstPhase").classList.add("hidden");
-            document.getElementById("secondPhase").classList.remove("hidden");
-        }, 1000); // Atraso de 1 segundo para efeito visual
+    // Avançar para a próxima fase
+    currentPhase++;
+    
+    // Exibir a nova fase
+    const nextPhase = document.getElementById(`phase${currentPhase}`);
+    if (nextPhase) {
+        nextPhase.classList.remove('hidden');
     }
 }
 
-// Função para mover o botão
-function moveButton(button) {
-    const container = document.querySelector(".container");
-    const containerWidth = container.offsetWidth;
-    const containerHeight = container.offsetHeight;
-
-    const randomX = Math.random() * (containerWidth - button.offsetWidth);
-    const randomY = Math.random() * (containerHeight - button.offsetHeight);
-
-    button.style.position = "absolute";
-    button.style.left = randomX + "px";
-    button.style.top = randomY + "px";
+// Função para esconder todas as fases
+function hideAllPhases() {
+    const allPhases = document.querySelectorAll('.phase');
+    allPhases.forEach(phase => {
+        phase.classList.add('hidden');
+    });
 }
 
-// Função chamada ao clicar no botão "Não"
-function moveNoButton() {
-    const noBtn = document.getElementById("noBtn");
-    moveButton(noBtn); // Faz o botão "Não" se mover
+// Função da fase 1: Confirmar se quer abrir o jogo
+function moveYesButton() {
+    hideAllPhases();
+    document.getElementById('secondPhase').classList.remove('hidden');
 }
 
-// Função para verificar o nome
+// Função para avançar para a próxima fase se o nome for confirmado como "Mimilly"
 function checkName(answer) {
     if (answer === 'sim') {
-        document.getElementById("secondPhase").classList.add("hidden");
-        document.getElementById("questionnaire").classList.remove("hidden");
+        hideAllPhases();
+        document.getElementById('questionnaire').classList.remove('hidden');
     } else {
-        document.getElementById("secondPhase").classList.add("hidden");
-        document.getElementById("errorMessage").classList.remove("hidden");
+        hideAllPhases();
+        document.getElementById('errorMessage').classList.remove('hidden');
     }
 }
 
-// Função para armazenar as respostas no localStorage
+// Função para armazenar as respostas
 function storeAnswers() {
-    const name = document.getElementById("name").value.toLowerCase();
-    const food = document.getElementById("food").value.toLowerCase();
-    const music = document.getElementById("music").value.toLowerCase();
-    const animals = document.getElementById("animals").value.toLowerCase();
+    const name = document.getElementById('name').value;
+    const food = document.getElementById('food').value;
+    const music = document.getElementById('music').value;
+    const animals = document.getElementById('animals').value;
 
-    localStorage.setItem("name", name);
-    localStorage.setItem("food", food);
-    localStorage.setItem("music", music);
-    localStorage.setItem("animals", animals);
-
-    if (name === "mimilly" && food === "macarrao ao molho branco" && music === "yoyok" && animals === "rabito, meg, lorenzo, amora e zara") {
-        document.getElementById("successMessage").classList.remove("hidden");
-        document.getElementById("questionnaire").classList.add("hidden");
+    if (name && food && music && animals) {
+        storedAnswers = { name, food, music, animals };
+        hideAllPhases();
+        document.getElementById('successMessage').classList.remove('hidden');
     } else {
-        document.getElementById("errorMessage").classList.remove("hidden");
-        document.getElementById("questionnaire").classList.add("hidden");
+        hideAllPhases();
+        document.getElementById('errorMessage').classList.remove('hidden');
     }
 }
 
-// Função para ir para a fase 4
+// Função para tentar novamente no caso de erro
+function retryAnswers() {
+    hideAllPhases();
+    document.getElementById('questionnaire').classList.remove('hidden');
+}
+
+// Função para avançar para a Fase 4 após sucesso no questionário
 function goToFourthPhase() {
-    document.getElementById("successMessage").classList.add("hidden");
-    document.getElementById("fourthPhase").classList.remove("hidden");
+    hideAllPhases();
+    document.getElementById('fourthPhase').classList.remove('hidden');
 }
 
-// Função para ir para a fase 5
+// Função para iniciar a Fase 5
 function goToFifthPhase() {
-    document.getElementById("fourthPhase").classList.add("hidden");
-    document.getElementById("fifthPhase").classList.remove("hidden");
+    hideAllPhases();
+    document.getElementById('fifthPhase').classList.remove('hidden');
 }
 
-// Função para verificar as respostas do questionário da fase 5
-function checkAnswersPhase5() {
-    const jojo = document.querySelector('input[name="jojo"]:checked');
-    const emy = document.querySelector('input[name="emy"]:checked');
+// Função para verificar as respostas na Fase 5
+function checkAnswers() {
+    let correct = 0;
 
-    if (!jojo || !emy) {
-        alert("Por favor, selecione todas as respostas!");
-        return;
+    // Verificar respostas das cores
+    const jojoColor = document.querySelector('input[name="jojo"]:checked');
+    const emyColor = document.querySelector('input[name="emy"]:checked');
+
+    if (jojoColor && jojoColor.value === 'roxo') {
+        correct++;
+    }
+    if (emyColor && emyColor.value === 'verde') {
+        correct++;
     }
 
-    let isCorrect = true;
-
-    if (jojo.value !== "roxo") isCorrect = false;
-    if (emy.value !== "verde") isCorrect = false;
-
-    if (isCorrect) {
-        score += 1;
+    // Mostrar sucesso ou erro baseado nas respostas
+    if (correct === 2) {
+        score++;
+        correctAnswers++;
         alert("Você acertou tudo! Ganhou 1 ponto!");
-        goToSixthPhase();
     } else {
-        document.getElementById("errorMessage").classList.remove("hidden");
-        alert("Você errou! Tente novamente.");
+        score -= 0.5;
+        alert("Você errou! Eu ganhei 0,5 pontos.");
     }
+
+    hideAllPhases();
+    document.getElementById('sixthPhase').classList.remove('hidden');
 }
 
+// Função para continuar para a fase 6
 function goToSixthPhase() {
-    document.getElementById("fifthPhase").classList.add("hidden");
-    document.getElementById("sixthPhase").classList.remove("hidden");
+    hideAllPhases();
+    document.getElementById('sixthPhase').classList.remove('hidden');
 }
 
-// Função para verificar as respostas do questionário da fase 6
-function checkAnswersPhase6() {
-    const filme_jojo = document.querySelector('input[name="filme_jojo"]:checked');
-    const filme_emy = document.querySelector('input[name="filme_emy"]:checked');
+// Função para verificar as respostas na Fase 6
+function checkAnswersSixth() {
+    let correct = 0;
 
-    if (!filme_jojo || !filme_emy) {
-        alert("Por favor, selecione todas as respostas!");
-        return;
+    // Verificar respostas dos filmes
+    const jojoMovie = document.querySelector('input[name="filme_jojo"]:checked');
+    const emyMovie = document.querySelector('input[name="filme_emy"]:checked');
+
+    if (jojoMovie && jojoMovie.value === 'interstellar') {
+        correct++;
+    }
+    if (emyMovie && emyMovie.value === 'sociedade dos poetas mortos') {
+        correct++;
     }
 
-    let isCorrect = true;
-
-    if (filme_jojo.value !== "interstellar") isCorrect = false;
-    if (filme_emy.value !== "sociedade dos poetas mortos") isCorrect = false;
-
-    if (isCorrect) {
-        score += 1;
-        alert("Você acertou! Ganhou 1 ponto!");
-        goToSeventhPhase();
+    // Mostrar sucesso ou erro baseado nas respostas
+    if (correct === 2) {
+        score++;
+        correctAnswers++;
+        alert("Você acertou tudo! Ganhou 1 ponto!");
     } else {
-        document.getElementById("errorMessage").classList.remove("hidden");
-        alert("Você errou! Tente novamente.");
+        score -= 0.5;
+        alert("Você errou! Eu ganhei 0,5 pontos.");
     }
+
+    hideAllPhases();
+    document.getElementById('seventhPhase').classList.remove('hidden');
 }
 
-function goToSeventhPhase() {
-    document.getElementById("sixthPhase").classList.add("hidden");
-    document.getElementById("seventhPhase").classList.remove("hidden");
-}
+// Função para verificar as respostas na Fase 7
+function checkAnswersSeventh() {
+    let correct = 0;
 
-// Função para verificar as respostas do questionário da fase 7
-function checkAnswersPhase7() {
-    const livro_jojo = document.querySelector('input[name="livro_jojo"]:checked');
-    const livro_emy = document.querySelector('input[name="livro_emy"]:checked');
+    // Verificar respostas dos livros
+    const jojoBook = document.querySelector('input[name="livro_jojo"]:checked');
+    const emyBook = document.querySelector('input[name="livro_emy"]:checked');
 
-    if (!livro_jojo || !livro_emy) {
-        alert("Por favor, selecione todas as respostas!");
-        return;
+    if (jojoBook && jojoBook.value === 'dante') {
+        correct++;
+    }
+    if (emyBook && emyBook.value === 'amendoas') {
+        correct++;
     }
 
-    let isCorrect = true;
-
-    if (livro_jojo.value !== "o perfume") isCorrect = false;
-    if (livro_emy.value !== "amendoas") isCorrect = false;
-
-    if (isCorrect) {
-        score += 1;
-        alert("Você acertou! Ganhou 1 ponto!");
+    // Mostrar sucesso ou erro baseado nas respostas
+    if (correct === 2) {
+        score++;
+        correctAnswers++;
+        alert("Você acertou tudo! Ganhou 1 ponto!");
+    } else {
+        score -= 0.5;
+        alert("Você errou! Eu ganhei 0,5 pontos.");
     }
+
+    alert(`Fim do jogo! Você acertou ${correctAnswers} de 6 perguntas e tem ${score} pontos.`);
 }
