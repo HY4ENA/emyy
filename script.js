@@ -122,10 +122,84 @@ function checkAnswers() {
         alert("Você errou! Tente novamente.");
     }
 }
-
-// Função para ir para a fase do Arcade (Fase 6)
-function goToArkanoid() {
+function goToSixthPhase() {
     document.getElementById("fifthPhase").classList.add("hidden");
+    document.getElementById("sixthPhase").classList.remove("hidden");
+}
+
+// Função para verificar as respostas do questionário da fase 6
+function checkAnswers() {
+    const filme_jojo = document.querySelector('input[name="filme_jojo"]:checked');
+    const filme_emy = document.querySelector('input[name="filme_emy"]:checked');
+
+    if (!filme_jojo|| !filme_emy) {
+        alert("Por favor, selecione todas as respostas!");
+        return;
+    }
+
+    let isCorrect = true;
+
+    // Verificação da primeira questão
+    if (filme_jojo.value !== "interstellar") {
+        isCorrect = false;
+    }
+
+    // Verificação da segunda questão
+    if (filme_emy.value !== "sociedade dos poetas mortos") {
+        isCorrect = false;
+    }
+
+    if (isCorrect) {
+        // Somar 1 ponto
+        score += 1;
+        alert("Você acertou! Ganhou 1 ponto!");
+        goToArkanoid();
+    } else {
+        document.getElementById("errorMessage").classList.remove("hidden");
+        alert("Você errou! Tente novamente.");
+    }
+}
+function goToSeventhPhase() {
+    document.getElementById("sixthPhase").classList.add("hidden");
+    document.getElementById("seventhPhase").classList.remove("hidden");
+}
+
+// Função para verificar as respostas do questionário da fase 7
+function checkAnswers() {
+    const livro_jojo = document.querySelector('input[name="livro_jojo"]:checked');
+    const livro_emy = document.querySelector('input[name="livro_emy"]:checked');
+
+    if (!livro_jojo || !livro_emy) {
+        alert("Por favor, selecione todas as respostas!");
+        return;
+    }
+
+    let isCorrect = true;
+
+    // Verificação da primeira questão
+    if (livro_jojo.value !== "o perfume") {
+        isCorrect = false;
+    }
+
+    // Verificação da segunda questão
+    if (livro_emy.value !== "amendoas") {
+        isCorrect = false;
+    }
+
+    if (isCorrect) {
+        // Somar 1 ponto
+        score += 1;
+        alert("Você acertou! Ganhou 1 ponto!");
+        goToArkanoid();
+    } else {
+        document.getElementById("errorMessage").classList.remove("hidden");
+        alert("Você errou! Tente novamente.");
+    }
+}
+
+// Função para ir para a fase do Arcade (Fase 8)
+function goToArkanoid() {
+    document.getElementById("seventhPhase").classList.add("hidden");
     document.getElementById("arkanoidPhase").classList.remove("hidden");
 }
 
